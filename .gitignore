@@ -1,0 +1,76 @@
+# Front-end
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+
+# Back-end
+
+# OS
+/back-end/.DS_Store
+
+# Tests
+/back-end/coverage
+/back-end/.nyc_output
+
+# IDEs and editors
+/back-end/.idea
+/back-end/.project
+/back-end/.classpath
+/back-end/.c9/
+/back-end/*.launch
+/back-end/.settings/
+/back-end/*.sublime-workspace
+
+# IDE - VSCode
+/back-end/.vscode/*
+/back-end/!.vscode/settings.json
+/back-end/!.vscode/tasks.json
+/back-end/!.vscode/launch.json
+/back-end/!.vscode/extensions.json
+
+# temp directory
+/back-end/.temp
+/back-end/.tmp
+
+# Runtime data
+/back-end/pids
+/back-end/*.pid
+/back-end/*.seed
+/back-end/*.pid.lock
+
+# Diagnostic reports (https://nodejs.org/api/report.html)
+/back-end/report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
+
+
+# geral
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules
+dist
+dist-ssr
+*.local
+build
+
+# dotenv environment variable files
+.env
+.env.development.local
+.env.test.local
+.env.production.local
+.env.local
