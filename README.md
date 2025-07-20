@@ -1,12 +1,8 @@
 # Coding Challenge
 
----
-
 Projeto de CRUD fullstack desenvolvido como parte de um desafio técnico. O objetivo principal foi construir uma aplicação funcional com boas práticas de desenvolvimento.
 
 ## 🚀 Instruções de instalação
-
----
 
 Clone o repositório:
 
@@ -55,11 +51,7 @@ yarn dev
 
 ## 📷 Prints do projeto
 
----
-
 ## 💻 Tecnologias utilizadas
-
----
 
 > ### Front-end
 
