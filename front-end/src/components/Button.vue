@@ -9,7 +9,7 @@ const props = defineProps<{
 
 <template>
 	<button
-		:class="`bg-${buttonBackgroundColor} text-${buttonTextColor} w-fit min-w-24 p-2 cursor-pointer inline-flex items-center justify-evenly rounded-md transition duration-400 ease-in-out hover:brightness-75`"
+		:class="`bg-${buttonBackgroundColor} text-${buttonTextColor} w-fit min-w-15 min-h-1 px-1.5 py-1 cursor-pointer inline-flex items-center justify-evenly rounded-md transition duration-400 ease-in-out hover:brightness-75`"
 	>
 		{{ buttonText }}
 	</button>
