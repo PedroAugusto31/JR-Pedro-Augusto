@@ -10,7 +10,7 @@ const props = defineProps({ show: Boolean });
 			@click.self="$emit('close')"
 		>
 			<div
-				class="modal-container bg-gray-200 text-black w-xl min-h-20 rounded-md px-3 py-1 transition-transform duration-300 ease-linear"
+				class="modal-container bg-gray-200 text-black w-xl min-h-20 rounded-md px-3 py-2 transition-transform duration-300 ease-linear"
 			>
 				<slot name="body"></slot>
 				<slot name="button-area"></slot>
