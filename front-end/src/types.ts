@@ -1,7 +1,7 @@
 export interface GameProps {
 	title: string;
 	releaseYear: number;
-	platforms: string;
+	platforms: string[];
 	rating: number;
 }
 

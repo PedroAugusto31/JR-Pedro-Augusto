@@ -11,7 +11,7 @@ const newGame = ref<GameProps>(
 		: {
 				title: "",
 				releaseYear: 0,
-				platforms: "",
+				platforms: [],
 				rating: 0,
 		  }
 );
@@ -43,7 +43,7 @@ function handleFormSubmit() {
 		<!--  -->
 		<template #body>
 			<form @submit.prevent="handleFormSubmit()" class="flex flex-col">
-				<label>
+				<label class="flex flex-col">
 					Título do jogo*
 					<input
 						type="text"
@@ -52,7 +52,7 @@ function handleFormSubmit() {
 						v-model="newGame.title"
 					/>
 				</label>
-				<label>
+				<label class="flex flex-col">
 					Ano de lançamento*
 					<input
 						type="number"
@@ -61,7 +61,7 @@ function handleFormSubmit() {
 						v-model="newGame.releaseYear"
 					/>
 				</label>
-				<label>
+				<label class="flex flex-col">
 					Plataformas*
 					<input
 						type="text"
@@ -70,7 +70,7 @@ function handleFormSubmit() {
 						v-model="newGame.platforms"
 					/>
 				</label>
-				<label>
+				<label class="flex flex-col">
 					Nota do jogo*
 					<input
 						type="number"
@@ -94,9 +94,9 @@ function handleFormSubmit() {
 
 				<Button
 					class="ml-2"
-					button-background-color="cyan-500"
-					button-text="adicionar"
-					button-text-color="black"
+					button-background-color="green-600"
+					button-text-color="white"
+					:button-text="props.game ? 'Editar' : 'Adicionar'"
 					type="submit"
 				/>
 			</div>
