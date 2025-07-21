@@ -24,6 +24,17 @@ function handleFormSubmit() {
 	if (newGame) {
 		emit("addGame", newGame.value);
 	}
+	// this.errors.username = ''; // Clear previous errors
+	if (!newGame.value.title) {
+		alert("Game title field is required!");
+	} else if (newGame.value.title.length < 3) {
+		alert("Game title must be at least 3 characters.");
+	}
+
+	//   if (!this.errors.username) {
+	//     // Form is valid, proceed with submission
+	//     alert('Form submitted successfully!');
+	//   }
 }
 </script>
 
@@ -36,6 +47,7 @@ function handleFormSubmit() {
 					Título do jogo*
 					<input
 						type="text"
+						required
 						class="border border-indigo-600 rounded-sm p-1 mb-4 outline-none"
 						v-model="newGame.title"
 					/>
@@ -44,6 +56,7 @@ function handleFormSubmit() {
 					Ano de lançamento*
 					<input
 						type="number"
+						required
 						class="border border-indigo-600 rounded-sm p-1 mb-4 outline-none"
 						v-model="newGame.releaseYear"
 					/>
@@ -52,6 +65,7 @@ function handleFormSubmit() {
 					Plataformas*
 					<input
 						type="text"
+						required
 						class="border border-indigo-600 rounded-sm p-1 mb-4 outline-none"
 						v-model="newGame.platforms"
 					/>
@@ -60,6 +74,9 @@ function handleFormSubmit() {
 					Nota do jogo*
 					<input
 						type="number"
+						min="0"
+						max="10"
+						required
 						class="border border-indigo-600 rounded-sm p-1 mb-4 outline-none"
 						v-model="newGame.rating"
 					/>
