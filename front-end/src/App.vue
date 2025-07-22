@@ -1,22 +1,8 @@
 <script setup lang="ts">
-import { ref } from "vue";
 import TableList from "./components/TableList.vue";
-
+import { openModal, closeModal, modals } from "./utils/modalUtils";
 import AddEditGameModal from "./components/AddEditGameModal.vue";
 import Button from "./components/Button.vue";
-
-const modals = ref<Record<string, boolean>>({
-	addEditModal: false,
-	confirmDeletion: false,
-});
-
-function openModal(name: string) {
-	modals.value[name] = true;
-}
-
-function closeModal(name: string) {
-	modals.value[name] = false;
-}
 </script>
 
 <template>
@@ -34,7 +20,10 @@ function closeModal(name: string) {
 
 		<TableList />
 		<Teleport to="#app">
-			<AddEditGameModal :isShowingModal="modals['addEditModal']" :closeModalFunc="() => closeModal('addEditModal')" />
+			<AddEditGameModal
+				:isShowingModal="modals['addEditModal'].isModalOpen"
+				:closeModalFunc="() => closeModal('addEditModal')"
+			/>
 		</Teleport>
 	</div>
 </template>
