@@ -10,7 +10,9 @@ export class GamesService {
     @InjectRepository(Game) private gameRepository: Repository<Game>,
   ) {}
 
-  getGames() {}
+  getGames() {
+    return this.gameRepository.find();
+  }
 
   addGameToList(gameDetails: AddGameParams) {
     const newGame = this.gameRepository.create(gameDetails);

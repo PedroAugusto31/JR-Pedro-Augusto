@@ -7,7 +7,9 @@ export class GamesController {
   constructor(private gameService: GamesService) {}
 
   @Get()
-  async getGames() {}
+  async getGames() {
+    return await this.gameService.getGames();
+  }
 
   @Post()
   async addGameToList(@Body() addGameDto: AddGameDto) {
