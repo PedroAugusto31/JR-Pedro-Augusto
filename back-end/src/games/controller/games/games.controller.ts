@@ -1,6 +1,7 @@
 import {
   Body,
   Controller,
+  Delete,
   Get,
   Param,
   ParseIntPipe,
@@ -36,5 +37,10 @@ export class GamesController {
     @Body() updateGameDto: UpdateGameDto,
   ) {
     await this.gameService.updateGame(id, updateGameDto);
+  }
+
+  @Delete(':id')
+  async deleteGameById(@Param('id', ParseIntPipe) id: number) {
+    await this.gameService.deleteGame(id);
   }
 }

@@ -22,4 +22,8 @@ export class GamesService {
   updateGame(id: number, updateGameDetails: UpdateGameParams) {
     return this.gameRepository.update({ id }, { ...updateGameDetails });
   }
+
+  deleteGame(id: number) {
+    return this.gameRepository.delete({ id });
+  }
 }
