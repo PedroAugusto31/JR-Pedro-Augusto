@@ -1,6 +1,15 @@
-import { Body, Controller, Get, Post } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Get,
+  Param,
+  ParseIntPipe,
+  Post,
+  Put,
+} from '@nestjs/common';
 import { AddGameDto } from '../../dtos/AddGame.dto';
 import { GamesService } from '../../services/games/games.service';
+import { UpdateGameDto } from '../../dtos/UpdateGame.dto';
 
 @Controller('games')
 export class GamesController {
@@ -19,5 +28,13 @@ export class GamesController {
       console.error(error);
       throw error;
     }
+  }
+
+  @Put(':id')
+  async updateGameByid(
+    @Param('id', ParseIntPipe) id: number,
+    @Body() updateGameDto: UpdateGameDto,
+  ) {
+    await this.gameService.updateGame(id, updateGameDto);
   }
 }
