@@ -10,8 +10,13 @@ export class GamesService {
     @InjectRepository(Game) private gameRepository: Repository<Game>,
   ) {}
 
-  getGames() {
-    return this.gameRepository.find();
+  async getGames() {
+    // Transforming platforms to array of strings for correct usage
+    const games = await this.gameRepository.find();
+    return games.map((game) => ({
+      ...game,
+      platforms: game.platforms.split(','),
+    }));
   }
 
   addGameToList(gameDetails: AddGameParams) {
