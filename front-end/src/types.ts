@@ -1,12 +1,17 @@
 export interface GameProps {
-	id: number;
+	id?: number;
 	title: string;
 	releaseYear: number;
 	platforms: string[];
 	rating: number;
 }
-
-export type AddEditGameProps = Omit<GameProps, "id">;
+export interface AddEditGameProps {
+	id?: number;
+	title: string;
+	releaseYear: number;
+	platforms: string;
+	rating: number;
+}
 
 export type ColorOptions =
 	| "white"

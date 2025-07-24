@@ -1,34 +1,18 @@
 <script setup lang="ts">
-import { onMounted, ref } from "vue";
 import type { GameProps } from "../types";
 import Button from "./Button.vue";
 import { modals, openModal } from "../utils/modalUtils";
 
-const gamesList = ref<GameProps[]>([
-	{
-		id: 0,
-		title: "Kingdom Hearts",
-		releaseYear: 2002,
-		platforms: ["Playstation"],
-		rating: 10,
-	},
-	{
-		id: 1,
-		title: "Kingdom Hearts 2",
-		releaseYear: 2005,
-		platforms: ["Playstation"],
-		rating: 10,
-	},
-]); // Inital value just for testing reasons
+const props = defineProps<{ gamesList: GameProps[] }>();
+
+const emit = defineEmits<{
+	(e: "delete", id: number): void;
+}>();
 
 function deleteGameFromList(id: number) {
-	gamesList.value = gamesList.value.filter((game) => game.id !== id);
-	// TODO: Reorganize logic to DELETE request
+	emit("delete", id);
 }
 
-//  onMounted(() => {
-//  	TODO: Make GET request to get game list
-//  });
 function openEditModal(game: GameProps) {
 	openModal("addEditModal");
 	modals.value["addEditModal"].game = game;
@@ -47,13 +31,17 @@ function openEditModal(game: GameProps) {
 				</tr>
 			</thead>
 			<tbody>
-				<tr v-for="game in gamesList" class="text-center even:bg-blue-500/40 border-b border-b-white h-14 group">
+				<tr
+					class="text-center even:bg-blue-500/40 border-b border-b-white h-14 group *:w-80 *:break-words"
+					v-for="game in gamesList"
+					:key="game.id"
+				>
 					<td>{{ game.title }}</td>
 					<td>{{ game.releaseYear }}</td>
 					<td class="w-72 break-words">
 						{{ game.platforms.join(", ") }}
 					</td>
-					<td class="relative w-80">
+					<td class="relative">
 						{{ `${game.rating}/10` }}
 						<div
 							class="absolute cursor-pointer right-0 top-1/5 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition duration-400 ease-in-out"
@@ -69,7 +57,7 @@ function openEditModal(game: GameProps) {
 								button-text-color="white"
 								button-text="Apagar"
 								class="mx-1"
-								@click="deleteGameFromList(game.id)"
+								@click="deleteGameFromList(game.id!)"
 							/>
 						</div>
 					</td>
