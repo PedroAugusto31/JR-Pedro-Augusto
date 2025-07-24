@@ -5,17 +5,13 @@ import { modals, openModal } from "../utils/modalUtils";
 
 const props = defineProps<{ gamesList: GameProps[] }>();
 
-const emit = defineEmits<{
-	(e: "delete", id: number): void;
-}>();
-
-function deleteGameFromList(id: number) {
-	emit("delete", id);
-}
-
 function openEditModal(game: GameProps) {
 	openModal("addEditModal");
 	modals.value["addEditModal"].game = game;
+}
+function openConfirmDeleteModal(game: GameProps) {
+	openModal("confirmDeletion");
+	modals.value["confirmDeletion"].game = game;
 }
 </script>
 
@@ -57,7 +53,7 @@ function openEditModal(game: GameProps) {
 								button-text-color="white"
 								button-text="Apagar"
 								class="mx-1"
-								@click="deleteGameFromList(game.id!)"
+								@click="openConfirmDeleteModal(game)"
 							/>
 						</div>
 					</td>

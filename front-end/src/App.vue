@@ -6,16 +6,21 @@ import Button from "./components/Button.vue";
 import { onMounted, ref } from "vue";
 import type { GameProps } from "./types";
 import { addGame, changeGameInfo, deleteGame, fetchData } from "./utils/api";
+import ConfirmGameDeleteModal from "./components/ConfirmGameDeleteModal.vue";
 
 const gamesList = ref<GameProps[]>([]);
 
-onMounted(async () => {
-	gamesList.value = await fetchData();
+onMounted(() => {
+	getGameList();
 });
 
-function addGameToList(newGameData: GameProps) {
-	gamesList.value.push(newGameData);
-	addGame({ ...newGameData, platforms: newGameData.platforms.join(",") });
+async function getGameList() {
+	gamesList.value = await fetchData();
+}
+
+async function addGameToList(newGameData: GameProps) {
+	await addGame({ ...newGameData, platforms: newGameData.platforms.join(",") });
+	getGameList();
 }
 
 function editGameInfo(id: number, gameDataToBeChanged: GameProps) {
@@ -25,9 +30,9 @@ function editGameInfo(id: number, gameDataToBeChanged: GameProps) {
 	changeGameInfo(id, { ...gameDataToBeChanged, platforms: gameDataToBeChanged.platforms.join(",") });
 }
 
-function deleteGameFromList(id: number) {
-	deleteGame(id);
-	gamesList.value = gamesList.value.filter((game) => game.id !== id);
+async function deleteGameFromList(id: number) {
+	await deleteGame(id);
+	getGameList();
 }
 </script>
 
@@ -52,6 +57,13 @@ function deleteGameFromList(id: number) {
 				:gamesList
 				@add="addGameToList"
 				@edit="editGameInfo"
+			/>
+			<ConfirmGameDeleteModal
+				:isShowingModal="modals['confirmDeletion'].isModalOpen"
+				:closeModalFunc="() => closeModal('confirmDeletion')"
+				:gamesList
+				:getGameList
+				@delete="deleteGameFromList"
 			/>
 		</Teleport>
 	</div>
