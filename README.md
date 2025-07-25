@@ -1,6 +1,6 @@
 # Game Collection
 
-Projeto de CRUD fullstack desenvolvido como parte de um desafio técnico. A aplicação é tem como função armazenar, editar ou excluir jogos, para fins pessoais. O objetivo principal foi construir uma aplicação funcional com boas práticas de desenvolvimento.
+Projeto de CRUD fullstack desenvolvido como parte de um desafio técnico. A aplicação tem como função armazenar, editar ou excluir jogos, para fins pessoais. O objetivo principal foi construir uma aplicação funcional com boas práticas de desenvolvimento.
 
 ## 📷 Prints do projeto
 
@@ -33,7 +33,7 @@ git clone https://github.com/PedroAugusto31/JR-Pedro-Augusto.git
 
 **Atenção:** A partir daqui é necessário que você tenha o [node]("https://nodejs.org/pt/download") para poder instalar as dependências do projeto.
 
-Obs: No Linux você pode instalar o node por meio do comando abaixo.
+**Obs:** No Linux você pode instalar o node por meio do comando abaixo.
 
 ```bash
 sudo apt install -y node.js
@@ -83,8 +83,6 @@ yarn dev
 - **Vue.js + Vite:** Escolhi o Vue para aprender um novo framework e utilizei o Vite pela configuração rápida e desempenho no desenvolvimento.
 
 - **TailwindCSS:** Usei Tailwind pela abordagem utilitária que agiliza e padroniza a estilização dos componentes.
-
-- **Vitest:** Optei pelo Vitest pela integração nativa com o Vite e pela agilidade nos testes.
 
 > ### Back-end
 
