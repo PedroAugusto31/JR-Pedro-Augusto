@@ -40,7 +40,8 @@ function addGameToList(newGameData: GameProps) {
 }
 
 function editGame(id: number, newGameData: GameProps) {
-	emit("edit", id, newGameData);
+	const { gameCover: _, ...gameDataWithoutGameCover } = newGameData;
+	emit("edit", id, gameDataWithoutGameCover);
 }
 
 function closeModal() {

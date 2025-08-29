@@ -13,6 +13,7 @@ function openConfirmDeleteModal(game: GameProps) {
 	openModal("confirmDeletion");
 	modals.value["confirmDeletion"].game = game;
 }
+// TODO: Make game cover update correctly
 </script>
 
 <template>
@@ -20,6 +21,7 @@ function openConfirmDeleteModal(game: GameProps) {
 		<table class="mx-auto w-[77rem] overflow-y-auto">
 			<thead class="border-b border-b-white">
 				<tr>
+					<th>Capa do jogo</th>
 					<th>Título</th>
 					<th>Ano de Lançamento</th>
 					<th>Plataformas</th>
@@ -32,6 +34,7 @@ function openConfirmDeleteModal(game: GameProps) {
 					v-for="game in gamesList"
 					:key="game.id"
 				>
+					<td><img :src="game.gameCover" class="h-64 w-64 object-contain aspect-3/2" /></td>
 					<td>{{ game.title }}</td>
 					<td>{{ game.releaseYear }}</td>
 					<td class="w-72 break-words">

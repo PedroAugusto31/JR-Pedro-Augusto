@@ -4,6 +4,7 @@ export interface GameProps {
 	releaseYear: number;
 	platforms: string[];
 	rating: number;
+	gameCover?: string;
 }
 export interface AddEditGameProps {
 	id?: number;

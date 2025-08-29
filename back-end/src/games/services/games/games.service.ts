@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Game } from 'src/typeorm/entities/Game';
 import { AddGameParams, UpdateGameParams } from 'src/utils/types';
+import { validateGameCover } from 'src/utils/scripts';
 import { Repository } from 'typeorm';
 
 @Injectable()
@@ -11,12 +12,20 @@ export class GamesService {
   ) {}
 
   async getGames() {
-    // Transforming platforms to array of strings for correct usage
     const games = await this.gameRepository.find();
-    return games.map((game) => ({
-      ...game,
-      platforms: game.platforms.split(','),
-    }));
+
+    const gamesWithCover = await Promise.all(
+      games.map(async (game) => {
+        const gameCover = await validateGameCover(game.title);
+        return {
+          ...game,
+          // Transforming platforms to array of strings for correct usage in front-end
+          platforms: game.platforms.split(','),
+          gameCover: gameCover,
+        };
+      }),
+    );
+    return gamesWithCover;
   }
 
   addGameToList(gameDetails: AddGameParams) {
