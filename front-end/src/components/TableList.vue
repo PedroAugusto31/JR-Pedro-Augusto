@@ -13,7 +13,6 @@ function openConfirmDeleteModal(game: GameProps) {
 	openModal("confirmDeletion");
 	modals.value["confirmDeletion"].game = game;
 }
-// TODO: Make game cover update correctly
 </script>
 
 <template>

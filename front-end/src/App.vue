@@ -23,11 +23,9 @@ async function addGameToList(newGameData: GameProps) {
 	getGameList();
 }
 
-function editGameInfo(id: number, gameDataToBeChanged: GameProps) {
-	const index = gamesList.value.findIndex((game) => game.id == id);
-
-	gamesList.value[index] = gameDataToBeChanged;
-	changeGameInfo(id, { ...gameDataToBeChanged, platforms: gameDataToBeChanged.platforms.join(",") });
+async function editGameInfo(id: number, gameDataToBeChanged: GameProps) {
+	await changeGameInfo(id, { ...gameDataToBeChanged, platforms: gameDataToBeChanged.platforms.join(",") });
+	getGameList();
 }
 
 async function deleteGameFromList(id: number) {
